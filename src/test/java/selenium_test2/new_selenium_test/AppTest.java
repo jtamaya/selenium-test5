@@ -15,6 +15,6 @@ public class AppTest
 		WebDriver driver = new ChromeDriver();
 		driver.navigate().to("https://www.browserstack.com/");
 		String verifyBrowserStackTitle = driver.getTitle();
-		assertEquals("Most Reliable App & Cross Browser Testing Platform | BrowserStack2",verifyBrowserStackTitle);
+		assertEquals("Most Reliable App & Cross Browser Testing Platform | BrowserStack",verifyBrowserStackTitle);
 	}
 }
