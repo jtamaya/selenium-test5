@@ -1,0 +1,21 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - docker login -u $dockerhub_username -p $dockerhub_password
+      - docker network create grid
+      - docker run -d -p 4442-4444:4442-4444 --net grid --name selenium-hub selenium/hub:4.8.1-20230306
+      - docker run -d --net grid -e SE_EVENT_BUS_HOST=selenium-hub --shm-size="2g" -e SE_EVENT_BUS_PUBLISH_PORT=4442 -e SE_EVENT_BUS_SUBSCRIBE_PORT=4443 selenium/node-chrome:4.8.1-20230306
+      - docker run -d --net grid -e SE_EVENT_BUS_HOST=selenium-hub --shm-size="2g" -e SE_EVENT_BUS_PUBLISH_PORT=4442 -e SE_EVENT_BUS_SUBSCRIBE_PORT=4443 selenium/node-edge:4.8.1-20230306
+      - docker run -d --net grid -e SE_EVENT_BUS_HOST=selenium-hub --shm-size="2g" -e SE_EVENT_BUS_PUBLISH_PORT=4442 -e SE_EVENT_BUS_SUBSCRIBE_PORT=4443 selenium/node-firefox:4.8.1-20230306
+  build:
+    commands:
+      - mvn test -e -X
+reports:
+  Selenium:
+    file-format: TestNG XML
+    files:
+      - target/surefire-reports/testng-results.xml
+artifacts:
+  files:
+    - ./**/*
