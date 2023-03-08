@@ -22,7 +22,7 @@ public class AppTest
 		options.addArguments("--headless");
 		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("--window-size=1920x1080");
-		WebDriver driver = new RemoteWebDriver(new URL("http://%s:4444"), options);
+		WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444"), options);
 		driver.navigate().to("https://www.browserstack.com/");
 		String verifyBrowserStackTitle = driver.getTitle();
 	}
