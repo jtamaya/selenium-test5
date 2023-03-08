@@ -11,6 +11,8 @@ phases:
       - ls
       - cd src
       - ls
+      - cd drivers
+      - ls
       - mvn test -e -X
 reports:
   Selenium:
