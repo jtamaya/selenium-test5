@@ -11,10 +11,9 @@ public class AppTest
 {
 	@Test
 	public void buildTest() {
+		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
-
-		driver.get("https://selenium.dev");
-
-		driver.quit();
+		driver.navigate().to("https://www.browserstack.com/");
+		String verifyBrowserStackTitle = driver.getTitle();
 	}
 }
