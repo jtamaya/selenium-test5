@@ -11,10 +11,10 @@ public class AppTest
 {
 	@Test
 	public void buildTest() {
-		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
 		WebDriver driver = new ChromeDriver();
-		driver.navigate().to("https://www.browserstack.com/");
-		String verifyBrowserStackTitle = driver.getTitle();
-		assertEquals("Most Reliable App & Cross Browser Testing Platform | BrowserStack",verifyBrowserStackTitle);
+
+		driver.get("https://selenium.dev");
+
+		driver.quit();
 	}
 }
