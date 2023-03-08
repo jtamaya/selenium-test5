@@ -1,5 +1,8 @@
 version: 0.2
 phases:
+  install:
+    commands:
+       - sh install_driver.sh
   pre_build:
     commands:
       - docker login -u $dockerhub_username -p $dockerhub_password
