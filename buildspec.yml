@@ -17,11 +17,6 @@ phases:
     commands:
       - chmod +x src/drivers/chromedriver
       - mvn test -e -X
-reports:
-  Selenium:
-    file-format: TestNG XML
-    files:
-      - target/surefire-reports/testng-results.xml
 artifacts:
   files:
     - ./**/*
