@@ -11,7 +11,7 @@ public class AppTest
 {
 	@Test
 	public void buildTest() {
-		System.setProperty("webdriver.chrome.driver", "./src/drivers/chromedriver");
+		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver");
 		WebDriver driver = new ChromeDriver();
 		driver.navigate().to("https://www.browserstack.com/");
 		String verifyBrowserStackTitle = driver.getTitle();
