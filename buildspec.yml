@@ -16,7 +16,6 @@ phases:
   build:
     commands:
       - chmod +x src/drivers/chromedriver
-      - google-chrome --no-sandbox
       - mvn test -e -X
 reports:
   Selenium:
