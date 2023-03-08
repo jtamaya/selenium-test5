@@ -6,9 +6,9 @@ phases:
       - docker network create grid
       - docker run -d -p 4442-4444:4442-4444 --net grid --name selenium-hub selenium/hub:4.8.1-20230306
       - docker run -d --net grid -e SE_EVENT_BUS_HOST=selenium-hub --shm-size="2g" -e SE_EVENT_BUS_PUBLISH_PORT=4442 -e SE_EVENT_BUS_SUBSCRIBE_PORT=4443 selenium/node-chrome:4.8.1-20230306
-      - sudo apt-get install -f
       - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
       - sudo dpkg -i google-chrome-stable_current_amd64.deb
+      - sudo apt-get install -f
   build:
     commands:
       - chmod +x src/drivers/chromedriver
