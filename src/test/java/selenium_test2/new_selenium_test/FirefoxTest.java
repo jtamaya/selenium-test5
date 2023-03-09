@@ -29,16 +29,17 @@ public class FirefoxTest
 		testCase(driver);
 	}
 	
-	@AfterTest
-	public void terminate() {
-		driver.close();
-	}
-	
 	public void testCase(WebDriver driver) {
 		driver.navigate().to("https://www.browserstack.com/");
 		String verifyBrowserStackTitle = driver.getTitle();
 		assertEquals("Most Reliable App & Cross Browser Testing Platform | BrowserStack",verifyBrowserStackTitle);
 		System.out.println(verifyBrowserStackTitle);
+	}
+	
+	@AfterTest
+	public void terminate() {
+		driver.close();
+		System.out.println("Closing Firefox");
 	}
 	
 	

@@ -20,7 +20,7 @@ public class ChromeTest
 	WebDriver driver;
 	ChromeOptions chromeOptions;
 	
-	@Test
+	@BeforeTest
 	public void buildTestChrome() throws MalformedURLException {
 		System.setProperty("webdriver.chrome.driver", "src/drivers/chromedriver");
 		chromeOptions = new ChromeOptions();
@@ -29,20 +29,20 @@ public class ChromeTest
 		chromeOptions.addArguments("--disable-dev-shm-usage");
 		chromeOptions.addArguments("--window-size=1920x1080");
 		driver = new RemoteWebDriver(new URL("http://localhost:4444"), chromeOptions);
-		testCase(driver);
-		
+	}
+	
+	@Test
+	public void testCase() {
+		driver.navigate().to("https://www.browserstack.com/");
+		String verifyBrowserStackTitle = driver.getTitle();
+		assertEquals("Most Reliable App & Cross Browser Testing Platform | BrowserStack",verifyBrowserStackTitle);
+		System.out.println(verifyBrowserStackTitle);
 	}
 	
 	@AfterTest
 	public void terminate() {
 		driver.close();
-	}
-	
-	public void testCase(WebDriver driver) {
-		driver.navigate().to("https://www.browserstack.com/");
-		String verifyBrowserStackTitle = driver.getTitle();
-		assertEquals("Most Reliable App & Cross Browser Testing Platform | BrowserStack",verifyBrowserStackTitle);
-		System.out.println(verifyBrowserStackTitle);
+		System.out.println("Closing Chrome");
 	}
 	
 	
