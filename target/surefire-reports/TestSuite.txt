@@ -1,0 +1,32 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 1.905 s <<< FAILURE! - in TestSuite
+testCase on testCase(selenium_test2.new_selenium_test.ChromeTest)(selenium_test2.new_selenium_test.ChromeTest)  Time elapsed: 0.01 s  <<< FAILURE!
+java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.navigate()" because "this.driver" is null
+	at selenium_test2.new_selenium_test.ChromeTest.testCase(ChromeTest.java:34)
+
+buildTestEdge on buildTestEdge(selenium_test2.new_selenium_test.EdgeTest)(selenium_test2.new_selenium_test.EdgeTest)  Time elapsed: 0.723 s  <<< FAILURE!
+org.openqa.selenium.remote.UnreachableBrowserException: 
+Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure.
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'SWO059169593957', ip: '192.168.68.53', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.6'
+Driver info: driver.version: RemoteWebDriver
+	at selenium_test2.new_selenium_test.EdgeTest.buildTestEdge(EdgeTest.java:28)
+Caused by: java.net.ConnectException: Failed to connect to localhost/[0:0:0:0:0:0:0:1]:4444
+	at selenium_test2.new_selenium_test.EdgeTest.buildTestEdge(EdgeTest.java:28)
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at selenium_test2.new_selenium_test.EdgeTest.buildTestEdge(EdgeTest.java:28)
+
+buildTestFireFox on buildTestFireFox(selenium_test2.new_selenium_test.FirefoxTest)(selenium_test2.new_selenium_test.FirefoxTest)  Time elapsed: 0.026 s  <<< FAILURE!
+org.openqa.selenium.remote.UnreachableBrowserException: 
+Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure.
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'SWO059169593957', ip: '192.168.68.53', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.6'
+Driver info: driver.version: RemoteWebDriver
+	at selenium_test2.new_selenium_test.FirefoxTest.buildTestFireFox(FirefoxTest.java:28)
+Caused by: java.net.ConnectException: Failed to connect to localhost/[0:0:0:0:0:0:0:1]:4444
+	at selenium_test2.new_selenium_test.FirefoxTest.buildTestFireFox(FirefoxTest.java:28)
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at selenium_test2.new_selenium_test.FirefoxTest.buildTestFireFox(FirefoxTest.java:28)
+

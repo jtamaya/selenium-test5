@@ -12,24 +12,18 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.*;
 
-public class ChromeTest 
-{
+public class ChromeTest{
 	public WebDriver driver;
-	public ChromeOptions chromeOptions;
-	
-	@BeforeTest
+	@BeforeMethod(alwaysRun = true)
 	public void buildTestChrome() throws MalformedURLException {
 		System.setProperty("webdriver.chrome.driver", "src/drivers/chromedriver");
-		chromeOptions = new ChromeOptions();
-		chromeOptions.addArguments("--no-sandbox");
-		chromeOptions.addArguments("--headless");
-		chromeOptions.addArguments("--disable-dev-shm-usage");
-		chromeOptions.addArguments("--window-size=1920x1080");
+		DesiredCapabilities cap = DesiredCapabilities.chrome();
 		System.out.println("Starting Chrome");
-		driver = new RemoteWebDriver(new URL("http://localhost:4444"), chromeOptions);
+		driver = new RemoteWebDriver(new URL("http://localhost:4444"), cap);
 	}
 	
 	@Test
@@ -45,6 +39,4 @@ public class ChromeTest
 		driver.close();
 		System.out.println("Closing Chrome");
 	}
-	
-	
 }
