@@ -17,8 +17,8 @@ import org.testng.annotations.*;
 
 public class ChromeTest 
 {
-	WebDriver driver;
-	ChromeOptions chromeOptions;
+	public WebDriver driver;
+	public ChromeOptions chromeOptions;
 	
 	@BeforeTest
 	public void buildTestChrome() throws MalformedURLException {
@@ -28,6 +28,7 @@ public class ChromeTest
 		chromeOptions.addArguments("--headless");
 		chromeOptions.addArguments("--disable-dev-shm-usage");
 		chromeOptions.addArguments("--window-size=1920x1080");
+		System.out.println("Starting Chrome");
 		driver = new RemoteWebDriver(new URL("http://localhost:4444"), chromeOptions);
 	}
 	
