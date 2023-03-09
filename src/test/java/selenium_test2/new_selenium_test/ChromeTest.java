@@ -15,28 +15,15 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.*;
 
 public class ChromeTest{
-	WebDriver driver;
-	ChromeOptions chromeOptions;
-	
 	
 	@Test
 	public void buildTestEdge() throws MalformedURLException {
 		System.setProperty("webdriver.chrome.driver", "src/drivers/chromedriver");
-		chromeOptions = new ChromeOptions();
-		driver = new RemoteWebDriver(new URL("http://localhost:4444"), chromeOptions);
-		testCase(driver);
-	}
-	
-	public void testCase(WebDriver driver) {
+		ChromeOptions chromeOptions = new ChromeOptions();
+		WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444"), chromeOptions);
 		driver.navigate().to("https://www.browserstack.com/");
 		String verifyBrowserStackTitle = driver.getTitle();
 		assertEquals("Most Reliable App & Cross Browser Testing Platform | BrowserStack",verifyBrowserStackTitle);
 		System.out.println(verifyBrowserStackTitle);
-	}
-	
-	@AfterTest
-	public void terminate() {
-		driver.close();
-		System.out.println("Closing Chrome");
 	}
 }

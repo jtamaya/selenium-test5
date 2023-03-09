@@ -15,32 +15,16 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.*;
 
-public class FirefoxTest 
-{
-	WebDriver driver;
-	FirefoxOptions firefoxOptions;
-	
+public class FirefoxTest {
 	
 	@Test
 	public void buildTestFireFox() throws MalformedURLException {
 		System.setProperty("webdriver.firefox.driver", "src/drivers/FirefoxDriver/geckodriver-v0.32.2-linux64.tar.gz");
-		firefoxOptions = new FirefoxOptions();
-		driver = new RemoteWebDriver(new URL("http://localhost:4444"), firefoxOptions);
-		testCase(driver);
-	}
-	
-	public void testCase(WebDriver driver) {
+		FirefoxOptions firefoxOptions = new FirefoxOptions();
+		WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444"), firefoxOptions);
 		driver.navigate().to("https://www.browserstack.com/");
 		String verifyBrowserStackTitle = driver.getTitle();
 		assertEquals("Most Reliable App & Cross Browser Testing Platform | BrowserStack",verifyBrowserStackTitle);
 		System.out.println(verifyBrowserStackTitle);
 	}
-	
-	@AfterTest
-	public void terminate() {
-		driver.close();
-		System.out.println("Closing Firefox");
-	}
-	
-	
 }
