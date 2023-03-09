@@ -10,24 +10,24 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeOptions;
-import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.*;
 
 public class ChromeTest{
-	public WebDriver driver;
-	@BeforeMethod(alwaysRun = true)
-	public void buildTestChrome() throws MalformedURLException {
-		System.setProperty("webdriver.chrome.driver", "src/drivers/chromedriver");
-		DesiredCapabilities cap = DesiredCapabilities.chrome();
-		System.out.println("Starting Chrome");
-		driver = new RemoteWebDriver(new URL("http://localhost:4444"), cap);
-	}
+	WebDriver driver;
+	ChromeOptions chromeOptions;
+	
 	
 	@Test
-	public void testCase() {
+	public void buildTestEdge() throws MalformedURLException {
+		System.setProperty("webdriver.chrome.driver", "src/drivers/chromedriver");
+		chromeOptions = new ChromeOptions();
+		driver = new RemoteWebDriver(new URL("http://localhost:4444"), chromeOptions);
+		testCase(driver);
+	}
+	
+	public void testCase(WebDriver driver) {
 		driver.navigate().to("https://www.browserstack.com/");
 		String verifyBrowserStackTitle = driver.getTitle();
 		assertEquals("Most Reliable App & Cross Browser Testing Platform | BrowserStack",verifyBrowserStackTitle);
