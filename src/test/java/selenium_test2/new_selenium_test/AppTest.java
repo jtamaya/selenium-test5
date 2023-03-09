@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class AppTest 
@@ -25,5 +26,17 @@ public class AppTest
 		WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444"), options);
 		driver.navigate().to("https://www.browserstack.com/");
 		String verifyBrowserStackTitle = driver.getTitle();
+		assertEquals("Most Reliable App & Cross Browser Testing Platform | BrowserStack",verifyBrowserStackTitle);
+	}
+	
+	@Test
+	public void buildTestEdge() throws MalformedURLException {
+		System.setProperty("webdriver.edge.driver", "src/driver/msedgedriver");
+		EdgeOptions options = new EdgeOptions();
+		
+		WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444"), options);
+		driver.navigate().to("https://www.browserstack.com/");
+		String verifyBrowserStackTitle = driver.getTitle();
+		assertEquals("Most Reliable App & Cross Browser Testing Platform | BrowserStack",verifyBrowserStackTitle);
 	}
 }
