@@ -1,5 +1,49 @@
 package selenium_test2.new_selenium_test;
 
-public class ChromeTest {
+import static org.junit.Assert.assertTrue;
+import static org.testng.Assert.assertEquals;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.*;
+
+public class ChromeTest 
+{
+	WebDriver driver;
+	ChromeOptions chromeOptions;
+	
+	@Test
+	public void buildTestChrome() throws MalformedURLException {
+		System.setProperty("webdriver.chrome.driver", "src/drivers/chromedriver");
+		chromeOptions = new ChromeOptions();
+		chromeOptions.addArguments("--no-sandbox");
+		chromeOptions.addArguments("--headless");
+		chromeOptions.addArguments("--disable-dev-shm-usage");
+		chromeOptions.addArguments("--window-size=1920x1080");
+		driver = new RemoteWebDriver(new URL("http://localhost:4444"), chromeOptions);
+		testCase(driver);
+		
+	}
+	
+	@AfterTest
+	public void terminate() {
+		driver.close();
+	}
+	
+	public void testCase(WebDriver driver) {
+		driver.navigate().to("https://www.browserstack.com/");
+		String verifyBrowserStackTitle = driver.getTitle();
+		assertEquals("Most Reliable App & Cross Browser Testing Platform | BrowserStack",verifyBrowserStackTitle);
+		System.out.println(verifyBrowserStackTitle);
+	}
+	
+	
 }
