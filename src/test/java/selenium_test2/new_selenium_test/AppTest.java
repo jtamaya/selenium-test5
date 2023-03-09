@@ -13,8 +13,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
 
 public class AppTest 
 {
@@ -23,7 +22,8 @@ public class AppTest
 	EdgeOptions edgeOptions;
 	FirefoxOptions firefoxOptions;
 	
-	@BeforeMethod
+	
+	@BeforeTest
 	public void buildOptions() {
 		chromeOptions = new ChromeOptions();
 		chromeOptions.addArguments("--no-sandbox");
@@ -39,7 +39,7 @@ public class AppTest
 	@Test
 	public void buildTestChrome() throws MalformedURLException {
 		System.setProperty("webdriver.chrome.driver", "src/drivers/chromedriver");
-		driver = new RemoteWebDriver(new URL("http://localhost:4444"), chromeOptions);
+		driver = new RemoteWebDriver(new URL("http://localhost:4444"), this.chromeOptions);
 		testCase(driver);
 		
 	}
@@ -47,15 +47,20 @@ public class AppTest
 	@Test
 	public void buildTestEdge() throws MalformedURLException {
 		System.setProperty("webdriver.edge.driver", "src/drivers/msedgedriver");
-		driver = new RemoteWebDriver(new URL("http://localhost:4444"), edgeOptions);
+		driver = new RemoteWebDriver(new URL("http://localhost:4444"), this.edgeOptions);
 		testCase(driver);
 	}
 	
 	@Test
 	public void buildTestFireFox() throws MalformedURLException {
 		System.setProperty("webdriver.firefox.driver", "src/drivers/FirefoxDriver/geckodriver-v0.32.2-linux64.tar.gz");
-		driver = new RemoteWebDriver(new URL("http://localhost:4444"), firefoxOptions);
+		driver = new RemoteWebDriver(new URL("http://localhost:4444"), this.firefoxOptions);
 		testCase(driver);
+	}
+	
+	@AfterTest
+	public void terminate() {
+		driver.close();
 	}
 	
 	public void testCase(WebDriver driver) {
