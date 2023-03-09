@@ -27,6 +27,7 @@ public class AppTest
 		driver.navigate().to("https://www.browserstack.com/");
 		String verifyBrowserStackTitle = driver.getTitle();
 		assertEquals("Most Reliable App & Cross Browser Testing Platform | BrowserStack",verifyBrowserStackTitle);
+		System.out.println(verifyBrowserStackTitle);
 	}
 	
 	@Test
@@ -38,5 +39,6 @@ public class AppTest
 		driver.navigate().to("https://www.browserstack.com/");
 		String verifyBrowserStackTitle = driver.getTitle();
 		assertEquals("Most Reliable App & Cross Browser Testing Platform | BrowserStack",verifyBrowserStackTitle);
+		System.out.println(verifyBrowserStackTitle);
 	}
 }
