@@ -13,6 +13,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
 public class AppTest 
@@ -22,7 +23,7 @@ public class AppTest
 	EdgeOptions edgeOptions;
 	FirefoxOptions firefoxOptions;
 	
-	@BeforeTest
+	@BeforeMethod
 	public void buildOptions() {
 		chromeOptions = new ChromeOptions();
 		chromeOptions.addArguments("--no-sandbox");
