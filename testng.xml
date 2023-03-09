@@ -3,9 +3,9 @@
 <suite name="Suite" parallel="methods" thread-count="2">
 	<test name="Test">
 		<classes>
-			<class name="ChromeTest"/>
 			<class name="EdgeTest"/>
 			<class name="FirefoxTest"/>
+			<class name="ChromeTest"/>
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
